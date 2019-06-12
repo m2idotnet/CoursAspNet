@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Master</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="container">
+        <nav class="nav">
+            @*<a href="~/Personne">Accueil personne</a>*@
+            @*@Html.ActionLink("Accueil Personne","Accueil","Personne")*@
+            @*<=> en tag Helpers*@
+            <a asp-action="Accueil" asp-controller="Personne">Accueil Personne</a>
+            <a asp-action="Index" asp-controller="Home">Accueil site</a>
+        </nav>
+    </header>
+    <section class="container">
+        @*Methode pour injecter le résultat de la vue <=> helpers razor*@
+        @RenderBody()
+    </section>
+</body>
+</html>
