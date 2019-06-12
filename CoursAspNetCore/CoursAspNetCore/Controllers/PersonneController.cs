@@ -12,5 +12,26 @@ namespace CoursAspNetCore.Controllers
         {
             return View();
         }
+
+        //Methode de redirection
+
+        public IActionResult Operation()
+        {
+            //redirection vers une action à l'interieur du même controller
+            //return RedirectToAction("Accueil");
+
+            //redirection vers une action d'un autre controller
+            //return RedirectToAction("Index", "Home");
+
+            //Autre methode de redirection
+            //redirection de type 301 <=> permanente
+            //return RedirectPermanent("Lien de redirection");
+
+            //redirect to route
+            //return RedirectToRoute(new { controller = "Home", action = "Index" });
+
+            //redirect to route en utilisant le nom de la route
+            //return RedirectToRoute("RoutePersonne");
+        }
     }
 }
