@@ -1,5 +1,22 @@
-﻿@{ 
+﻿@{
     Layout = "_Layout";
+    ViewData["TitrePage"] = "Accueil personne";
 }
 <h2>Accueil Personne</h2>
+<div>
+    @ViewData["nom"]
+</div>
+<div>
+    @ViewData["prenom"]
+</div>
+@foreach (var c in ViewData["ListeString"] as List<string>)
+{
+    if (c != "toto")
+    {
+        <div>
+            @c
+        </div>
+    }
+
+}
 

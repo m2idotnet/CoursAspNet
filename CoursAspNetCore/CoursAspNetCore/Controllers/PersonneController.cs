@@ -10,6 +10,9 @@ namespace CoursAspNetCore.Controllers
     {
         public IActionResult Accueil()
         {
+            ViewData["nom"] = "abadi";
+            ViewData["prenom"] = "Ihab";
+            ViewData["ListeString"] = new List<string> { "toto", "tata", "titi" };
             return View();
         }
 
@@ -31,7 +34,7 @@ namespace CoursAspNetCore.Controllers
             //return RedirectToRoute(new { controller = "Home", action = "Index" });
 
             //redirect to route en utilisant le nom de la route
-            //return RedirectToRoute("RoutePersonne");
+            return RedirectToRoute("RoutePersonne");
         }
     }
 }
