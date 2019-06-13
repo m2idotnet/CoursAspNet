@@ -68,7 +68,20 @@ namespace CoursAspNetCore.Controllers
                 personne = p,
                 adresse = a
             };
+            //string t = "test";
+            //return View("GetPersonne", t);
             return View(v);
+        }
+
+        public IActionResult GetPersonnes()
+        {
+            return View(Personne.GetListePersonnes());
+        }
+
+        public IActionResult DetailPersonne(int id)
+        {
+            Personne p = Personne.GetListePersonnes().FirstOrDefault(x => x.Id == id);
+            return View(p);
         }
     }
 }
