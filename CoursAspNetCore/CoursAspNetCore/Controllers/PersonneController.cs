@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoursAspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNetCore.Controllers
@@ -10,9 +11,21 @@ namespace CoursAspNetCore.Controllers
     {
         public IActionResult Accueil()
         {
-            ViewData["nom"] = "abadi";
-            ViewData["prenom"] = "Ihab";
-            ViewData["ListeString"] = new List<string> { "toto", "tata", "titi" };
+            //ViewData
+            //ViewData["nom"] = "abadi";
+            //ViewData["prenom"] = "Ihab";
+            //ViewData["ListeString"] = new List<string> { "toto", "tata", "titi" };
+            //ViewBag
+            ViewBag.nom = "abadi";
+            ViewBag.prenom = "Ihab";
+            ViewBag.ListeString = new List<string> { "toto", "tata", "titi" };
+
+            ViewBag.ListePersonnes = new List<Personne>
+            {
+                new Personne {Nom = "toto", Prenom = "tata"},
+                new Personne {Nom = "titi", Prenom = "minet"},
+            };
+            
             return View();
         }
 

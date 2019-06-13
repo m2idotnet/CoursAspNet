@@ -1,15 +1,38 @@
-﻿@{
+﻿@using CoursAspNetCore.Models;
+@{
     Layout = "_Layout";
     ViewData["TitrePage"] = "Accueil personne";
 }
 <h2>Accueil Personne</h2>
+@*
+        Utilisation du ViewData pour récupérer des données de la part du controller
+        <div>
+        @ViewData["nom"]
+    </div>
+    <div>
+        @ViewData["prenom"]
+    </div>
+    @foreach (var c in ViewData["ListeString"] as List<string>)
+    {
+        if (c != "toto")
+        {
+            <div>
+                @c
+            </div>
+        }
+
+    }*@
+
 <div>
-    @ViewData["nom"]
+    Nom : @ViewBag.nom
 </div>
 <div>
-    @ViewData["prenom"]
+    Prénom : @ViewBag.prenom
 </div>
-@foreach (var c in ViewData["ListeString"] as List<string>)
+<div>
+    <h2>Liste des strings</h2>
+</div>
+@foreach (string c in ViewBag.ListeString)
 {
     if (c != "toto")
     {
@@ -19,4 +42,13 @@
     }
 
 }
+<div>
+    Liste des personnes
+</div>
+@foreach(Personne p in ViewBag.ListePersonnes as List<Personne>)
+{
+    <div>
+        @p.Nom @p.Prenom
+    </div>
 
+}
