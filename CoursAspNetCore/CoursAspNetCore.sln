@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNetCore", "CoursAspNetCore\CoursAspNetCore.csproj", "{FE70B6E1-AF35-408B-A271-08283ACF4E6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNetCore", "CoursAspNetCore\CoursAspNetCore.csproj", "{FE70B6E1-AF35-408B-A271-08283ACF4E6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionAgenda", "CorrectionAgenda\CorrectionAgenda.csproj", "{01815313-5C64-4B04-9897-7850ADE4E846}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FE70B6E1-AF35-408B-A271-08283ACF4E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE70B6E1-AF35-408B-A271-08283ACF4E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE70B6E1-AF35-408B-A271-08283ACF4E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01815313-5C64-4B04-9897-7850ADE4E846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01815313-5C64-4B04-9897-7850ADE4E846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01815313-5C64-4B04-9897-7850ADE4E846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01815313-5C64-4B04-9897-7850ADE4E846}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
