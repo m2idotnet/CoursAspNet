@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNetCore.Models;
+using CoursAspNetCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNetCore.Controllers
@@ -48,6 +49,26 @@ namespace CoursAspNetCore.Controllers
 
             //redirect to route en utilisant le nom de la route
             return RedirectToRoute("RoutePersonne");
+        }
+
+
+        //public IActionResult GetPersonne()
+        //{
+        //    Personne p = new Personne { Id = 1, Nom = "abadi", Prenom = "ihab" };
+            
+        //    return View(p);
+        //}
+
+        public IActionResult GetPersonne()
+        {
+            Personne p = new Personne { Id = 1, Nom = "abadi", Prenom = "ihab" };
+            Adresse a = new Adresse { PersonneId = 1, Id = 1, Ville = "Tourcoing", Rue = "rue de paris" };
+            GetPersonneViewModel v = new GetPersonneViewModel
+            {
+                personne = p,
+                adresse = a
+            };
+            return View(v);
         }
     }
 }
