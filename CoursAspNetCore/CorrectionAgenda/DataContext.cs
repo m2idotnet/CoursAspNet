@@ -15,19 +15,18 @@ namespace CorrectionAgenda
     {
         public DataContext()
         {
-            //RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)Database.GetService<IRelationalDatabaseCreator>();
-            //databaseCreator.CreateTables();
-            
+            try
+            {
+                RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)Database.GetService<IRelationalDatabaseCreator>();
+                databaseCreator.CreateTables();
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
-        private  void CreateTable()
-        {
-           // SpecialDataBase databaseCreator = (SpecialDataBase)Database.GetService<SqlServerDatabaseCreator>();
-           //if(databaseCreator.testTable())
-           // {
-           //     databaseCreator.CreateTables();
-           // }
-        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\DataBaseEntityFrameWork;Integrated Security=True");
@@ -39,19 +38,7 @@ namespace CorrectionAgenda
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-        }
-    }
 
-    public class SpecialDataBase : SqlServerDatabaseCreator
-    {
-        public SpecialDataBase( RelationalDatabaseCreatorDependencies dependencies, ISqlServerConnection connection,  IRawSqlCommandBuilder rawSqlCommandBuilder) : base(dependencies, connection, rawSqlCommandBuilder)
-        {
-        }
-
-        public bool testTable()
-        {
-            return HasTables();
         }
     }
 }
