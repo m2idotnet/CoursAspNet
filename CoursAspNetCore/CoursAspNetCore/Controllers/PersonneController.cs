@@ -84,6 +84,7 @@ namespace CoursAspNetCore.Controllers
             return View(p);
         }
 
+        [HttpGet]
         public IActionResult FormPersonne()
         {
             return View();
@@ -99,6 +100,8 @@ namespace CoursAspNetCore.Controllers
         //    p.Add();
         //    return RedirectToAction("Accueil");
         //}
+
+        [HttpPost]
         public IActionResult AddPersonne(string Autre, Personne p)
         {
             if (ModelState.IsValid)
