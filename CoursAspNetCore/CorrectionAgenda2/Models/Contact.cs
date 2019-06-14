@@ -37,5 +37,10 @@ namespace CorrectionAgenda2.Models
             DatabaseContext.Instance.Contacts.Add(this);
             DatabaseContext.Instance.SaveChanges();
         }
+
+        public Contact()
+        {
+            emails = new List<Email>();
+        }
     }
 }

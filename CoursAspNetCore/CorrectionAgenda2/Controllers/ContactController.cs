@@ -1,6 +1,8 @@
 ﻿using CorrectionAgenda2.Models;
+using CorrectionAgenda2.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +30,7 @@ namespace CorrectionAgenda2.Controllers
 
         //Action qui traite me formulaire d'ajout
         [HttpPost]
-        public IActionResult AddContact(Contact contact, IFormFile avatar, bool? id)
+        public IActionResult AddContact(Contact contact, IFormFile avatar)
         {
             if(ModelState.IsValid)
             {
@@ -48,6 +50,52 @@ namespace CorrectionAgenda2.Controllers
                 return RedirectToAction("AddContact", new { id = true });
             }
             
+        }
+
+        [HttpGet]
+        public IActionResult AddEmail(int id)
+        {
+            Contact c = DatabaseContext.Instance.Contacts.FirstOrDefault(x => x.Id == id);
+            if(c == null)
+            {
+                return RedirectToAction("Index");
+            }
+            ViewBag.ContactId = c.Id;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddEmail(Email email)
+        {
+            Contact c = DatabaseContext.Instance.Contacts.FirstOrDefault(x => x.Id == email.ContactId);
+            if(c != null)
+            {
+                email.Id = default(int);
+                DatabaseContext.Instance.Emails.Add(email);
+                DatabaseContext.Instance.SaveChanges();
+                ViewBag.ContactId = c.Id;
+                ViewBag.error = false;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+
+            
+        }
+
+        [HttpGet]
+        public IActionResult DetailContact(int id)
+        {
+            Contact c = DatabaseContext.Instance.Contacts.Include("emails").FirstOrDefault((x) => x.Id == id);
+            if(c != null)
+            {
+                return View(c);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }
