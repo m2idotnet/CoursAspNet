@@ -1,4 +1,7 @@
 ﻿@model Personne
+@{ 
+    Layout = "_Layout";
+}
 <h2>FormPersonne</h2>
 @*<form action="" method="post">
 
@@ -20,6 +23,11 @@
         <label asp-for="Nom"></label>
         <input asp-for="Nom" />
         <span asp-validation-for="Nom"></span>
+    </div>
+    <div>
+        <label asp-for="Tel"></label>
+        <input asp-for="Tel" />
+        <span asp-validation-for="Tel"></span>
     </div>
     <div>
         <label asp-for="Prenom"></label>
