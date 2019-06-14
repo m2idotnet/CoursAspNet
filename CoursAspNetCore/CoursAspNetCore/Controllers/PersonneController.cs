@@ -83,5 +83,40 @@ namespace CoursAspNetCore.Controllers
             Personne p = Personne.GetListePersonnes().FirstOrDefault(x => x.Id == id);
             return View(p);
         }
+
+        public IActionResult FormPersonne()
+        {
+            return View();
+        }
+
+        //public IActionResult AddPersonne(string nom, string prenom)
+        //{
+        //    Personne p = new Personne()
+        //    {
+        //        Nom = nom,
+        //        Prenom = prenom
+        //    };
+        //    p.Add();
+        //    return RedirectToAction("Accueil");
+        //}
+        public IActionResult AddPersonne(string Autre, Personne p)
+        {
+            if (ModelState.IsValid)
+            {
+
+                //Personne p = new Personne()
+                //{
+                //    Nom = nom,
+                //    Prenom = prenom
+                //};
+                p.Add();
+                return RedirectToAction("Accueil");
+            }
+            else
+            {
+                return RedirectToAction("FormPersonne");
+            }
+            
+        }
     }
 }

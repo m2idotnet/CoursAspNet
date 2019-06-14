@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,9 @@ namespace CoursAspNetCore.Models
         private string prenom;
 
         public int Id { get => id; set => id = value; }
+        [Display (Name = "Nom du client"), Required, MaxLength(50)]
         public string Nom { get => nom; set => nom = value; }
+        [Display(Name = "Prénom du client")]
         public string Prenom { get => prenom; set => prenom = value; }
 
         public static List<Personne> liste = new List<Personne>()
@@ -24,6 +27,11 @@ namespace CoursAspNetCore.Models
         public static List<Personne> GetListePersonnes()
         {
             return liste;
+        }
+
+        public void Add()
+        {
+
         }
     }
 }

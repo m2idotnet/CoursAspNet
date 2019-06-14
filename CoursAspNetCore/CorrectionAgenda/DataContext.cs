@@ -20,10 +20,11 @@ namespace CorrectionAgenda
                 RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)Database.GetService<IRelationalDatabaseCreator>();
                 databaseCreator.CreateTables();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
+
         }
 
 
