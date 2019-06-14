@@ -103,6 +103,7 @@ namespace CoursAspNetCore.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 //Personne p = new Personne()
                 //{
                 //    Nom = nom,
