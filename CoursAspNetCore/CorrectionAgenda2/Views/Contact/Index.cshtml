@@ -52,6 +52,8 @@
                 <div class="col">
                     <a asp-controller="Contact" asp-route-id="@c.Id" asp-action="DetailContact"><i class="fas fa-search"></i></a>
                     <a asp-controller="Contact" asp-route-id="@c.Id" asp-action="AddEmail"><i class="fas fa-envelope"></i></a>
+                    <a asp-controller="Contact" asp-route-id="@c.Id" asp-action="DeleteContact"><i class="fas fa-trash"></i></a>
+                    <a asp-controller="Contact" asp-route-id="@c.Id" asp-action="EditContact"><i class="fas fa-edit"></i></a>
                 </div>
             </div>
         }
