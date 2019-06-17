@@ -1,4 +1,5 @@
 ﻿using CoursIOCAspNetCore.Interfaces;
+using Microsoft.Extensions.PlatformAbstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace CoursIOCAspNetCore.Models
         private IServiceProvider serviceProvier;
         public Personne()
         {
-
+            
         }
         public Personne(IServiceProvider s)
         {

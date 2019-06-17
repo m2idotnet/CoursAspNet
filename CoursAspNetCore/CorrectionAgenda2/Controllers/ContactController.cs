@@ -13,10 +13,16 @@ namespace CorrectionAgenda2.Controllers
 {
     public class ContactController : Controller
     {
+        private IServiceProvider service;
+
+        public ContactController(IServiceProvider s)
+        {
+            service = s;
+        }
         public IActionResult Index(bool? id)
         {
             ViewBag.error = id;
-            return View(Contact.GetContacts());
+            return View(Contact.GetContacts(service));
         }
 
         //Action qui envoie le formulaire d'ajout 
