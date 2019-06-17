@@ -12,7 +12,7 @@ namespace PanierAspNetCore.Controllers
 {
     public class PanierController : Controller
     {
-        private IHttpContextAccessor accessor;
+        //private IHttpContextAccessor accessor;
 
         //public PanierController(IHttpContextAccessor a)
         //{
@@ -44,6 +44,18 @@ namespace PanierAspNetCore.Controllers
 
             HttpContext.Session.SetString("panier", JsonConvert.SerializeObject(panier));
             return RedirectToAction("Index");
+        }
+
+        public IActionResult SavePanier()
+        {
+            Panier panier = JsonConvert.DeserializeObject<Panier>(HttpContext.Session.GetString("panier"));
+            if(panier != null)
+            {
+                DataBaseContext.Instance.Paniers.Add(panier);
+                DataBaseContext.Instance.SaveChanges();
+                HttpContext.Session.Remove("panier");
+            }
+            return RedirectToAction("Index", "Produit");
         }
     }
 }
