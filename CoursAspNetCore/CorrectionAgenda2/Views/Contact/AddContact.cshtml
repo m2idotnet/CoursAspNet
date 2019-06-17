@@ -15,7 +15,7 @@
         </div>
     }
     <form enctype="multipart/form-data" asp-route-id="" asp-action="AddContact" asp-controller="Contact" method="post">
-        @if(Model != null)
+        @if (Model != null)
         {
             <input type="hidden" asp-for="Id" />
 
@@ -64,17 +64,18 @@
         <div class="row">
             <div class="col">
                 <button class="form-control btn  btn-danger" type="submit">
-                    @if(Model != null)
+                    @*@(Model != null ? "" : "Ajouter")*@
+                    @if (Model != null)
                     {
 
-                    <span>Modifier</span>
+                        <span>Modifier</span>
                     }
                     else
                     {
                         <span>Ajouter</span>
                     }
 
-                </button> 
+                </button>
             </div>
         </div>
     </form>
