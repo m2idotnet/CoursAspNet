@@ -20,6 +20,14 @@ namespace PanierAspNetCore.Models
                 }
                 return total;
             }
+            set
+            {
+                total = 0;
+                foreach (ProduitPanier p in produits)
+                {
+                    total += p.produit.Prix * p.Qty;
+                }
+            }
         }
 
         public ICollection<ProduitPanier> produits { get; set; }
