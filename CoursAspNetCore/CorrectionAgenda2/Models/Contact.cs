@@ -38,6 +38,20 @@ namespace CorrectionAgenda2.Models
             DatabaseContext.Instance.SaveChanges();
         }
 
+        public void Update()
+        {
+            Contact c = DatabaseContext.Instance.Contacts.FirstOrDefault(x => x.Id == Id);
+            if(c != null)
+            {
+                c.Nom = Nom;
+                c.Prenom = Prenom;
+                c.Tel = Tel;
+                if(Avatar != default(string))
+                    c.Avatar = Avatar;
+            }
+            DatabaseContext.Instance.SaveChanges();
+        }
+
         public Contact()
         {
             emails = new List<Email>();

@@ -42,7 +42,15 @@ namespace CorrectionAgenda2.Controllers
                     avatar.CopyTo(stream);
                     contact.Avatar = nomAvatar;
                 }
-                contact.Add();
+                if(contact.Id != default(int))
+                {
+                    contact.Update();
+                }
+                else
+                {
+                    contact.Add();
+                }
+                
                 return RedirectToAction("Index", new { id = false });
             }
             else
@@ -96,6 +104,30 @@ namespace CorrectionAgenda2.Controllers
             {
                 return RedirectToAction("Index");
             }
+        }
+
+        [HttpGet]
+        public IActionResult DeleteContact(int id)
+        {
+            Contact c = DatabaseContext.Instance.Contacts.Include("emails").FirstOrDefault((x) => x.Id == id);
+            if(c != null)
+            {
+                DatabaseContext.Instance.Emails.RemoveRange(c.emails.ToArray());
+                DatabaseContext.Instance.Contacts.Remove(c);
+                DatabaseContext.Instance.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditContact(int id)
+        {
+            Contact c = DatabaseContext.Instance.Contacts.Include("emails").FirstOrDefault((x) => x.Id == id);
+            if (c != null)
+            {
+                return View("AddContact", c);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
