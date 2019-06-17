@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionAgenda2", "Correc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursIOCAspNetCore", "CoursIOCAspNetCore\CoursIOCAspNetCore.csproj", "{F923F583-EBD8-4700-A4BC-83F062386A49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursSessionEtCookieAspNETCore", "CoursSessionEtCookieAspNETCore\CoursSessionEtCookieAspNETCore.csproj", "{847F756E-25D4-4C81-90F6-28DE409E54BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F923F583-EBD8-4700-A4BC-83F062386A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F923F583-EBD8-4700-A4BC-83F062386A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F923F583-EBD8-4700-A4BC-83F062386A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847F756E-25D4-4C81-90F6-28DE409E54BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847F756E-25D4-4C81-90F6-28DE409E54BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847F756E-25D4-4C81-90F6-28DE409E54BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847F756E-25D4-4C81-90F6-28DE409E54BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
