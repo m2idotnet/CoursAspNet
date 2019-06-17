@@ -15,7 +15,15 @@ namespace CorrectionAgenda2.Models
         private string tel;
         private string avatar;
 
+        private IServiceProvider serviceProvider;
+
         public int Id { get => id; set => id = value; }
+
+        
+        public Contact(IServiceProvider s)
+        {
+            serviceProvider = s;
+        }
 
         [Required(ErrorMessage ="Champ obligatoire"), Display(Name = "Nom du contact")]
         public string Nom { get => nom; set => nom = value; }
@@ -27,15 +35,16 @@ namespace CorrectionAgenda2.Models
         public ICollection<Email> emails { get; set; }
         public string Avatar { get => avatar; set => avatar = value; }
 
-        public static List<Contact> GetContacts()
+        public static List<Contact> GetContacts(IServiceProvider service)
         {
-            return DatabaseContext.Instance.Contacts.OrderBy(x => x.Nom).ToList();
+            
+            return ((IData)service.GetService(typeof(IData))).Contacts.OrderBy(x => x.Nom).ToList();
         }
 
         public void Add()
         {
-            DatabaseContext.Instance.Contacts.Add(this);
-            DatabaseContext.Instance.SaveChanges();
+            ((IData)serviceProvider.GetService(typeof(IData))).Contacts.Add(this);
+            ((IData)serviceProvider.GetService(typeof(IData))).SaveChanges();
         }
 
         public void Update()
