@@ -17,10 +17,10 @@ namespace PanierAspNetCore.Tools
         {
             get
             {
-                if (_session != null)
+                if (infoUser != null)
                 {
-                    int id = Convert.ToInt32(_session.GetString("id"));
-                    string token = _session.GetString("token");
+                    int id = Convert.ToInt32(infoUser.id);
+                    string token = infoUser.token;
                     User u = DataBaseContext.Instance.Users.FirstOrDefault(c => c.Id == id && c.Token == token);
                     if (u == null)
                     {
@@ -38,10 +38,10 @@ namespace PanierAspNetCore.Tools
             }
         }
         public bool isLogged { get {
-                if(_session != null)
+                if(infoUser != null)
                 {
-                    int id = Convert.ToInt32(_session.GetString("id"));
-                    string token = _session.GetString("token");
+                    int id = Convert.ToInt32(infoUser.id);
+                    string token = infoUser.token;
                     User u = DataBaseContext.Instance.Users.FirstOrDefault(c => c.Id == id && c.Token == token);
                     if (u == null)
                     {
@@ -59,9 +59,18 @@ namespace PanierAspNetCore.Tools
             }
         }
         private static ISession _session;
+        private static dynamic infoUser = null;
+        
+        //Pas encore vue
+        //private HttpRequest _httpRequest;
+        //public LoginService(HttpRequest request)
+        //{
+        //    _httpRequest = request;
+        //}
+
         public LoginService()
         {
-           
+
         }
 
         public bool LogOut(ISession session)
@@ -106,6 +115,38 @@ namespace PanierAspNetCore.Tools
 
             // Return the hexadecimal string.
             return sBuilder.ToString();
+        }
+
+        public bool Logged(HttpRequest request)
+        {
+            int id = Convert.ToInt32(request.Cookies["id"]);
+            string token = request.Cookies["token"];
+            User u = DataBaseContext.Instance.Users.FirstOrDefault(c => c.Id == id && c.Token == token);
+            if (u == null)
+            {
+                infoUser = null;
+                return false;
+                
+            }
+            else
+            {
+                infoUser = new { id = id, token = token};
+               
+                return true;
+
+            }
+        }
+
+        public bool LogOut(HttpResponse response)
+        {
+            CookieOptions o = new CookieOptions()
+            {
+                Expires = DateTime.Now.AddSeconds(-1)
+            };
+            response.Cookies.Append("id", "", o);
+            response.Cookies.Append("token", "", o);
+            infoUser = null;
+            return true;
         }
     }
 }

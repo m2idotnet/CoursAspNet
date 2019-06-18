@@ -35,8 +35,14 @@ namespace PanierAspNetCore.Controllers
             {
                 u.Token = serviceLogin.GetMd5Hash(crypto, Guid.NewGuid().ToString());
                 DataBaseContext.Instance.SaveChanges();
-                HttpContext.Session.SetString("token", u.Token);
-                HttpContext.Session.SetString("id", u.Id.ToString());
+                //HttpContext.Session.SetString("token", u.Token);
+                //HttpContext.Session.SetString("id", u.Id.ToString());
+                CookieOptions o = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(1)
+                };
+                Response.Cookies.Append("id", u.Id.ToString(), o);
+                Response.Cookies.Append("token", u.Token, o);
                 return RedirectToAction("AddProduit", "Produit");
             }
             else
@@ -48,7 +54,7 @@ namespace PanierAspNetCore.Controllers
         [HttpGet]
         public IActionResult LogOut()
         {
-            serviceLogin.LogOut(HttpContext.Session);
+            serviceLogin.LogOut(Response);
             return RedirectToAction("Index", "Produit");
         }
     }
