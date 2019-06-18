@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PanierAspNetCore.Interface;
+using PanierAspNetCore.Tools;
 
 namespace PanierAspNetCore
 {
@@ -22,6 +24,7 @@ namespace PanierAspNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddScoped<ILogin, LoginService>();
             services.AddSession();
         }
 
