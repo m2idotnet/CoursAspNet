@@ -12,6 +12,8 @@ namespace PanierAspNetCore.Interface
     {
         bool Logged(ISession session);
         bool LogOut(ISession session);
+        bool Logged(HttpRequest request);
+        bool LogOut(HttpResponse response);
         string GetMd5Hash(MD5 md5Hash, string input);
         bool isLogged { get; }
 

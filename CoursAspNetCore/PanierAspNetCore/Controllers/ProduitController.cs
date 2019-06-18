@@ -27,7 +27,7 @@ namespace PanierAspNetCore.Controllers
 
         public IActionResult AddProduit()
         {
-            if (serviceLogin.Logged(HttpContext.Session))
+            if (serviceLogin.Logged(Request))
                 return View();
             else
                 return RedirectToAction("Login", "User");
