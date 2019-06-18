@@ -48,5 +48,21 @@ namespace CoursSessionEtCookieAspNETCore.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult ReadCookie()
+        {
+            string valueCookie = Request.Cookies["cleCookie"];
+            return new ContentResult() { Content = valueCookie};
+        }
+
+        public IActionResult CreateCookie()
+        {
+            CookieOptions o = new CookieOptions()
+            {
+                Expires = DateTime.Now.AddHours(1)
+            };
+            Response.Cookies.Append("cleCookie", "ValueCookie",o);
+            return RedirectToAction("Index");
+        }
     }
 }
