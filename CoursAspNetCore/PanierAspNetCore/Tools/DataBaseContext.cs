@@ -31,6 +31,7 @@ namespace PanierAspNetCore.Tools
             RelationalDatabaseCreator creator = (RelationalDatabaseCreator)Database.GetService<IRelationalDatabaseCreator>();
             try
             {
+                Database.Migrate();
                 creator.CreateTables();
             }
             catch (Exception e)
@@ -47,5 +48,6 @@ namespace PanierAspNetCore.Tools
         public DbSet<Produit> Produits { get; set; }
         public DbSet<ProduitPanier> ProduitPaniers { get; set; }
         public DbSet<Panier> Paniers { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
