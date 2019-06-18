@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PanierAspNetCore.Models;
 
 namespace PanierAspNetCore.Controllers
 {
@@ -14,5 +15,17 @@ namespace PanierAspNetCore.Controllers
             
             return View(DataBaseContext.Instance.Produits.ToList());
         }
+
+
+        public IActionResult AddProduit(Produit p)
+        {
+            if (HttpContext.Session == null)
+            {
+                return RedirectToAction("")
+            }
+
+            return View();
+        }
+
     }
 }

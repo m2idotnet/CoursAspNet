@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PanierAspNetCore.Tools;
 
 namespace PanierAspNetCore.Models
 {
@@ -16,7 +17,6 @@ namespace PanierAspNetCore.Models
         public string Titre { get => titre; set => titre = value; }
         public string Image { get => image; set => image = value; }
         public decimal Prix { get => prix; set => prix = value; }
-
         
     }
 }
