@@ -11,6 +11,11 @@ namespace PanierAspNetCore.Interface
     public interface ILogin
     {
         bool Logged(ISession session);
+        bool LogOut(ISession session);
         string GetMd5Hash(MD5 md5Hash, string input);
+        bool isLogged { get; }
+
+        string userName { get; }
+       
     }
 }

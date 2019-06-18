@@ -44,5 +44,12 @@ namespace PanierAspNetCore.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            serviceLogin.LogOut(HttpContext.Session);
+            return RedirectToAction("Index", "Produit");
+        }
     }
 }

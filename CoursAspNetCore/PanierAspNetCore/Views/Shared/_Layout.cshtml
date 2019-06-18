@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject PanierAspNetCore.Interface.ILogin loginService
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,7 +33,17 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Produit" asp-action="Index">Produits</a></li>
                     <li><a asp-area="" asp-controller="Panier" asp-action="Index">Panier</a></li>
-                    <li><a asp-area="" asp-controller="Produit" asp-action="AddProduit">Ajouter un produit</a></li>             
+                    @if (loginService.isLogged)
+                    {
+                        <li><a asp-area="" asp-controller="Produit" asp-action="AddProduit">Ajouter un produit</a></li>
+                        <li><a>@loginService.userName </a></li>
+                        <li><a asp-action="LogOut" asp-controller="User">se deconnecter</a></li>
+                    }else
+                    {
+                        <li><a asp-action="Login" asp-controller="User">Se connecter</a></li>
+
+                    }
+
                 </ul>
             </div>
         </div>

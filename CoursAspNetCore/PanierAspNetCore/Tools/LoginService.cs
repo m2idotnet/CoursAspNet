@@ -12,6 +12,65 @@ namespace PanierAspNetCore.Tools
 {
     public class LoginService : ILogin
     {
+
+        public string userName
+        {
+            get
+            {
+                if (_session != null)
+                {
+                    int id = Convert.ToInt32(_session.GetString("id"));
+                    string token = _session.GetString("token");
+                    User u = DataBaseContext.Instance.Users.FirstOrDefault(c => c.Id == id && c.Token == token);
+                    if (u == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return u.UserName;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public bool isLogged { get {
+                if(_session != null)
+                {
+                    int id = Convert.ToInt32(_session.GetString("id"));
+                    string token = _session.GetString("token");
+                    User u = DataBaseContext.Instance.Users.FirstOrDefault(c => c.Id == id && c.Token == token);
+                    if (u == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        private static ISession _session;
+        public LoginService()
+        {
+           
+        }
+
+        public bool LogOut(ISession session)
+        {
+            session.Remove("id");
+            session.Remove("token");
+            _session = session;
+            return true;
+        }
         public bool Logged(ISession session)
         {
             int id = Convert.ToInt32(session.GetString("id"));
@@ -23,7 +82,9 @@ namespace PanierAspNetCore.Tools
             }
             else
             {
+                _session = session;
                 return true;
+                
             }
         }
 
