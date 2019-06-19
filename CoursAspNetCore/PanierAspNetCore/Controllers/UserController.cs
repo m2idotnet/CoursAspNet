@@ -29,6 +29,7 @@ namespace PanierAspNetCore.Controllers
         public IActionResult Login(string username, string password)
         {
             MD5 crypto = MD5.Create();
+            
             string hash = serviceLogin.GetMd5Hash(crypto, password);
             User u = DataBaseContext.Instance.Users.FirstOrDefault((x) => x.UserName == username && x.Password == hash);
             if(u != null)
@@ -56,6 +57,36 @@ namespace PanierAspNetCore.Controllers
         {
             serviceLogin.LogOut(Response);
             return RedirectToAction("Index", "Produit");
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            ViewBag.UserName = Request.Cookies["username"];
+            ViewBag.Password = Request.Cookies["password"];
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(string UserName, string Password, string save, string valid)
+        {
+            if(valid == null)
+            {
+                Response.Cookies.Append("username", UserName, new CookieOptions { Expires = DateTime.Now.AddDays(1) });
+                Response.Cookies.Append("password", Password, new CookieOptions { Expires = DateTime.Now.AddDays(1) });
+            }
+            else if(save == null)
+            {
+                User u = new User
+                {
+                    UserName = UserName,
+                    Password = serviceLogin.GetMd5Hash(MD5.Create(), Password)
+                };
+                u.Add();
+                Response.Cookies.Append("username", UserName, new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+                Response.Cookies.Append("password", Password, new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+            }
+            return RedirectToAction("Login");
         }
     }
 }
