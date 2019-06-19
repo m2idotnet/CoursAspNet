@@ -35,12 +35,37 @@ namespace CoursAspNetCoreAjax.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult TestAjax(string toto, string tata)
+        public IActionResult TestAjax(string toto, string tata, bool dataPlus)
         {
             Thread.Sleep(3000);
             ViewBag.toto = toto;
             ViewBag.tata = tata;
+            ViewBag.dataPlus = dataPlus;
             return PartialView();
+        }
+
+        [HttpGet]
+        public IActionResult AddUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddUser(string Nom, string Prenom)
+        {
+            return new ContentResult { Content = "Ajouté : "+Nom+" "+Prenom };
+        }
+
+        public IActionResult TestChamp(string valueChamp)
+        {
+            if(valueChamp != null && valueChamp.Length > 3)
+            {
+                return new JsonResult(new { error = false });
+            }
+            else
+            {
+                return new JsonResult(new { error = true });
+            }
         }
     }
 }

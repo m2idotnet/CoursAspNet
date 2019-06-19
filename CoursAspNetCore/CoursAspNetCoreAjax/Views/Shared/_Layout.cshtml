@@ -33,8 +33,8 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a class="reqAjax" asp-controller="Home" asp-route-toto="v1" asp-route-tata="vTata1" asp-action="TestAjax">Tester Ajax</a></li>
-                    <li><a class="reqAjax" asp-controller="Home" asp-route-toto="v2" asp-route-tata="vTata2" asp-action="testAjax">Tester Ajax 2</a></li>
+                    <li><a class="reqAjax" asp-controller="Home" asp-route-toto="v1" data-ajax="true" asp-route-tata="vTata1" asp-action="TestAjax">Tester Ajax</a></li>
+                    <li><a class="reqAjax" asp-controller="Home" asp-route-toto="v2" data-ajax="false" asp-route-tata="vTata2" asp-action="testAjax">Tester Ajax 2</a></li>
                 </ul>
             </div>
         </div>
