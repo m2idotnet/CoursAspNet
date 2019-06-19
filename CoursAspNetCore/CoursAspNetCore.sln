@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursSessionEtCookieAspNETC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanierAspNetCore", "PanierAspNetCore\PanierAspNetCore.csproj", "{D90646E3-1ED9-477F-9776-26C6C88586B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNetCoreAjax", "CoursAspNetCoreAjax\CoursAspNetCoreAjax.csproj", "{F79DAEEE-1718-4BF3-B2F9-9484DF484C39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D90646E3-1ED9-477F-9776-26C6C88586B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D90646E3-1ED9-477F-9776-26C6C88586B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D90646E3-1ED9-477F-9776-26C6C88586B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79DAEEE-1718-4BF3-B2F9-9484DF484C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79DAEEE-1718-4BF3-B2F9-9484DF484C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79DAEEE-1718-4BF3-B2F9-9484DF484C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79DAEEE-1718-4BF3-B2F9-9484DF484C39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
