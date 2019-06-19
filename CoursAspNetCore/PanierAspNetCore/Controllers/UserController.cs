@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PanierAspNetCore.Controllers
@@ -30,9 +29,10 @@ namespace PanierAspNetCore.Controllers
         public IActionResult Login(string username, string password)
         {
             MD5 crypto = MD5.Create();
+            
             string hash = serviceLogin.GetMd5Hash(crypto, password);
             User u = DataBaseContext.Instance.Users.FirstOrDefault((x) => x.UserName == username && x.Password == hash);
-            if (u != null)
+            if(u != null)
             {
                 u.Token = serviceLogin.GetMd5Hash(crypto, Guid.NewGuid().ToString());
                 DataBaseContext.Instance.SaveChanges();
@@ -59,35 +59,34 @@ namespace PanierAspNetCore.Controllers
             return RedirectToAction("Index", "Produit");
         }
 
-        //[HttpGet]
-        //public IActionResult SaveInLocal(string u, string p_1, string p_2)
-        //{
-        //    CookieOptions o = new CookieOptions
-        //    {
-        //        Expires = DateTime.Now.AddHours(1)
-        //    };
+        [HttpGet]
+        public IActionResult Register()
+        {
+            ViewBag.UserName = Request.Cookies["username"];
+            ViewBag.Password = Request.Cookies["password"];
+            return View();
+        }
 
-        //    SHA512 shaM = SHA512.Create();
-        //    byte[] data1 = Encoding.UTF8.GetBytes(p_1);
-        //    byte[] data2 = Encoding.UTF8.GetBytes(p_2);
-        //    byte[] hash1 = shaM.ComputeHash(data1);
-        //    byte[] hash2 = shaM.ComputeHash(data2);
-
-        //    if (p_1.Length != p_2.Length)
-        //    {
-        //        if (hash1.SequenceEqual(hash2))
-
-        //        {
-        //            return false;
-        //        }
-        //    }
-
-        //    Response.Cookies.Append("usernameInscription", u,o);
-        //    Response.Cookies.Append("password1", p_1,o);
-        //    Response.Cookies.Append("password2", p_2,o);
-
-        //    return RedirectToPage();
-        //}
-
+        [HttpPost]
+        public IActionResult Register(string UserName, string Password, string save, string valid)
+        {
+            if(valid == null)
+            {
+                Response.Cookies.Append("username", UserName, new CookieOptions { Expires = DateTime.Now.AddDays(1) });
+                Response.Cookies.Append("password", Password, new CookieOptions { Expires = DateTime.Now.AddDays(1) });
+            }
+            else if(save == null)
+            {
+                User u = new User
+                {
+                    UserName = UserName,
+                    Password = serviceLogin.GetMd5Hash(MD5.Create(), Password)
+                };
+                u.Add();
+                Response.Cookies.Append("username", UserName, new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+                Response.Cookies.Append("password", Password, new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+            }
+            return RedirectToAction("Login");
+        }
     }
 }
