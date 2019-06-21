@@ -20,6 +20,7 @@ namespace CorrectionAgenda2.Models
         [ForeignKey("ContactId")]
         //ignore convertion en json pour eviter les objets cyclique
         [JsonIgnore]
+
         public Contact contact { get; set; }
     }
 }

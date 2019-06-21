@@ -24,6 +24,7 @@ namespace ApiAgenda
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +36,15 @@ namespace ApiAgenda
             }
 
             app.UseMvc();
+            //pour autoriser cross origin share
+            app.UseCors(options =>
+            {
+                //Accepter tout le monde avec toutes les methodes
+                options.AllowAnyOrigin().AllowAnyMethod();
+                //accepter que http://monclient
+                options.WithOrigins("http://monclient").WithMethods("GET","POST","PUT","DELETE");
+                
+            });
         }
     }
 }

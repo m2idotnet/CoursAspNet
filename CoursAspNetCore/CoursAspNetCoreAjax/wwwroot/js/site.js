@@ -57,3 +57,16 @@ $('.champ').on('keyup', function (e) {
         }
     })
 })
+
+//Request en ajax vers une api
+$.ajax({
+    url: "http://localhost:58721/api/values",
+    type: "GET",
+    dataType: "Json",
+    success: (response) => {
+        console.dir(response);
+    },
+    error: (err) => {
+        console.dir(err);
+    }
+})
