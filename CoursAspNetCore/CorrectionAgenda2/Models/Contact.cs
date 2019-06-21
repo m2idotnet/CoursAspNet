@@ -43,8 +43,10 @@ namespace CorrectionAgenda2.Models
 
         public void Add()
         {
-            ((IData)serviceProvider.GetService(typeof(IData))).Contacts.Add(this);
-            ((IData)serviceProvider.GetService(typeof(IData))).SaveChanges();
+            //((IData)serviceProvider.GetService(typeof(IData))).Contacts.Add(this);
+            //((IData)serviceProvider.GetService(typeof(IData))).SaveChanges();
+            DatabaseContext.Instance.Contacts.Add(this);
+            DatabaseContext.Instance.SaveChanges();
         }
 
         public void Update()

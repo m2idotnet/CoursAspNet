@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace CorrectionAgenda2.Models
         public string Mail { get => mail; set => mail = value; }
         public int ContactId { get => contactId; set => contactId = value; }
         [ForeignKey("ContactId")]
+        //ignore convertion en json pour eviter les objets cyclique
+        [JsonIgnore]
         public Contact contact { get; set; }
     }
 }
