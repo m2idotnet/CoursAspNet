@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionAjaxFormulaire", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursApiRest", "CoursApiRest\CoursApiRest.csproj", "{4FD7F88F-253B-41A8-8A01-9D33935D1B3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAgenda", "ApiAgenda\ApiAgenda.csproj", "{7DE8B09C-FCFE-46D5-B046-669735D47838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAgenda", "ApiAgenda\ApiAgenda.csproj", "{7DE8B09C-FCFE-46D5-B046-669735D47838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVoiture", "ApiVoiture\ApiVoiture.csproj", "{2FCBB977-D4CB-4260-844D-350576966ABF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{7DE8B09C-FCFE-46D5-B046-669735D47838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DE8B09C-FCFE-46D5-B046-669735D47838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DE8B09C-FCFE-46D5-B046-669735D47838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCBB977-D4CB-4260-844D-350576966ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCBB977-D4CB-4260-844D-350576966ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCBB977-D4CB-4260-844D-350576966ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCBB977-D4CB-4260-844D-350576966ABF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
