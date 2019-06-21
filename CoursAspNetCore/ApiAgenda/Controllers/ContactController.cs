@@ -13,11 +13,17 @@ namespace ApiAgenda.Controllers
     public class ContactController : Controller
     {
         [HttpGet]
-        public IEnumerable<Contact> Get()
+        public IActionResult Get([FromHeader] string token)
         {
-            List<Contact> l =  DatabaseContext.Instance.Contacts.Include("emails").ToList();
+            if (token == "valueToken")
+            {
+                List<Contact> l = DatabaseContext.Instance.Contacts.Include("emails").ToList();
+
+                return new JsonResult(l);
+            }
+            else
+                return NotFound();
             
-            return l;
         }
 
         [HttpGet("{id}")]

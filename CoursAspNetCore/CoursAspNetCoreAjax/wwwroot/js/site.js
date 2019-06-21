@@ -18,42 +18,55 @@ $('.reqAjax').on('click', function (e) {
         type: 'GET',
         dataType: 'html',
         data: "dataPlus=" + $(this).attr('data-ajax'),
-        success: (responseData) => {
+        success: (responseData) => { 
             $("#resultAjax").html(responseData);
         },
         error: (err) => {
             console.dir(err);
-            alert("Erreur serveur : " + err.statusText);
+            alert("Erreur serveur : " + err.statusText)
         }
-    });
+    })
 });
 //soumettre un formulaire en ajax
-$("#monForm").on('submit',
-    function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: $(this).attr('action'),
-            type: $(this).attr('method'),
-            data: $(this).serialize(),
-            dataType: "html",
-            success: (response) => {
-                alert(response);
-            }
-        });
-    });
+$("#monForm").on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        data: $(this).serialize(),
+        dataType: "html",
+        success: (response) => {
+            alert(response);
+        }
+    })
+})
 
 $('.champ').on('keyup', function (e) {
     $.ajax({
         url: "/Home/TestChamp",
         type: "GET",
-        data: "valueChamp=" + $(this).val(),
+        data: "valueChamp="+$(this).val(),
         dataType: "json",
         success: (response) => {
             if (response.error) {
                 $(this).css('border-color', '#cd2127');
-            } else {
+            }
+            else {
                 $(this).css('border-color', '#fff');
             }
         }
-    });
+    })
+})
+
+//Request en ajax vers une api
+$.ajax({
+    url: "http://localhost:58721/api/values",
+    type: "GET",
+    dataType: "Json",
+    success: (response) => {
+        console.dir(response);
+    },
+    error: (err) => {
+        console.dir(err);
+    }
 })
