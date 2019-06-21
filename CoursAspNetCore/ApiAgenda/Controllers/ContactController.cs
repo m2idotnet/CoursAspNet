@@ -1,5 +1,6 @@
 ﻿using CorrectionAgenda2.Models;
 using CorrectionAgenda2.Tools;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,9 +11,11 @@ using System.Threading.Tasks;
 namespace ApiAgenda.Controllers
 {
     [Route("[controller]")]
+    [EnableCors("maPolice")]
     public class ContactController : Controller
     {
         [HttpGet]
+        //[EnableCors("Police2")]
         public IActionResult Get([FromHeader] string token)
         {
             if (token == "valueToken")
@@ -23,7 +26,6 @@ namespace ApiAgenda.Controllers
             }
             else
                 return NotFound();
-            
         }
 
         [HttpGet("{id}")]
