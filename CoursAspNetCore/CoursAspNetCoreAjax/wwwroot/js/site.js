@@ -59,10 +59,14 @@ $('.champ').on('keyup', function (e) {
 })
 
 //Request en ajax vers une api
+
+
 $.ajax({
-    url: "http://localhost:58721/api/values",
+    url: "http://localhost:58721/contact",
     type: "GET",
-    dataType: "Json",
+    headers: {
+        'token' : 'valueToken'
+    },
     success: (response) => {
         console.dir(response);
     },
