@@ -22,3 +22,4 @@ export interface Contact {
   avatar: any;
   emails : any[]
 }
+
