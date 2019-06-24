@@ -2,17 +2,11 @@
 <div class="container">
     <form id="addUserForm" asp-controller="Home" asp-action="AddUser" method="post">
         <div class="row">
-            <div class="col-lg-9">
-                <input asp-for="Nom" placeholder="Votre nom" class="form-control champ" />
-            </div>
-            <div class="col-lg-3">
-                <span asp-validation-for="Nom" class="error"></span>
-            </div>
+            <div class="col-lg-9"><input asp-for="Nom" placeholder="Votre nom" class="form-control champ" /></div>
+            <div class="col-lg-3"><span asp-validation-for="Nom" class="error"></span></div>
         </div>
         <div class="row">
-            <div class="col-lg-9">
-                <input asp-for="Prenom" placeholder="Votre prénom" class="form-control champ" />
-            </div>
+            <div class="col-lg-9"><input asp-for="Prenom" placeholder="Votre prénom" class="form-control champ" /></div>
             <div class="col-lg-3">
                 <span asp-validation-for="Prenom" class="error"></span>
             </div>
