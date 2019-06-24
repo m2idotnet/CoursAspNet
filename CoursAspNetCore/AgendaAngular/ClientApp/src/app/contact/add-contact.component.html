@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="addContactForm" (ngSubmit)="Valider()">
+    <div class="row">
+      <input type="text" class="form-control" formControlName="nom" placeholder="Votre nom" />
+    </div>
+
+    <div class="row">
+      <input type="text" class="form-control" formControlName="prenom" placeholder="Votre prénom" />
+    </div>
+
+    <div class="row">
+      <input type="text" class="form-control" formControlName="tel" placeholder="Votre tél" />
+    </div>
+
+    <div class="row">
+      <button type="submit" class="form-control btn btn-danger">Ajouter</button>
+    </div>
+  </form>
+</div>

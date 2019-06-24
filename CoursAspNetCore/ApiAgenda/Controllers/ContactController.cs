@@ -34,16 +34,23 @@ namespace ApiAgenda.Controllers
             return DatabaseContext.Instance.Contacts.Include("emails").FirstOrDefault(x => x.Id == id);
         }
 
+        //[HttpPost]
+        //public IEnumerable<bool> Post([FromBody] List<Contact> contacts)
+        //{
+        //    List<bool> lB = new List<bool>();
+        //    foreach(Contact contact in contacts)
+        //    {
+        //        contact.Add();
+        //        lB.Add(contact.Id > 0);
+        //    }
+        //    return lB;
+        //}
+
         [HttpPost]
-        public IEnumerable<bool> Post([FromBody] List<Contact> contacts)
+        public bool Post([FromBody] Contact contact)
         {
-            List<bool> lB = new List<bool>();
-            foreach(Contact contact in contacts)
-            {
-                contact.Add();
-                lB.Add(contact.Id > 0);
-            }
-            return lB;
+            contact.Add();
+            return contact.Id > 0;
         }
 
         [HttpPut("{id}")]
