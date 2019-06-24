@@ -1,8 +1,17 @@
 <div>
   <h1>Liste des contacts</h1>
   <div class="container">
-    <div *ngFor="let c of contacts" class="row">
-      {{c.nom}} {{c.prenom}} {{c.tel}} 
+    <div class="row">
+      <div class="col">Nom du contact</div>
+      <div class="col">Prénom du contact</div>
+      <div class="col">Téléphone du contact</div>
     </div>
+    <div *ngFor="let c of contacts" class="row">
+      <div class="col">{{c.nom}}</div>
+      <div class="col">{{c.prenom}}</div>
+      <div class="col"> {{c.tel}} </div>
+      <a href="" title="{{c.id}} {{c.nom}} {{c.prenom}}"><img src="" />Edit </a>
+    </div>
+
   </div>
 </div>
