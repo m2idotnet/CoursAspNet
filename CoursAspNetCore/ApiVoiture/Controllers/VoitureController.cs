@@ -1,4 +1,5 @@
-﻿using ApiVoiture.Tools;
+﻿using ApiVoiture.Models;
+using ApiVoiture.Tools;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,7 +20,12 @@ namespace ApiVoiture.Controllers
         {
             if (Models.User.TestToken(token))
             {
-                return new JsonResult(DataBaseContext.Instance.Voitures.ToList());
+                List<dynamic> l = new List<dynamic>();
+                foreach(Voiture v in DataBaseContext.Instance.Voitures.ToList())
+                {
+                    l.Add(new { voiture = v, Edit = "http://localhost/edit/"+v.Id, Get = "http://localhost/get/"+v.Id});
+                }
+                return new JsonResult(l);
             }
             else
             {

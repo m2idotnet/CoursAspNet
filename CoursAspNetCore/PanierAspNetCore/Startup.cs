@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,13 @@ namespace PanierAspNetCore
             services.AddMvc();
             services.AddScoped<ILogin, LoginService>();
             services.AddSession();
+            //services.AddAuthorization(policy =>
+            //{
+            //    policy.AddPolicy("logged", (options) =>
+            //    {
+            //        options.Requirements.Add(new MinimumAgeRequirement(21));
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,4 +61,25 @@ namespace PanierAspNetCore
             });
         }
     }
+    #region autho
+    public class MinimumAgeRequirement : IAuthorizationRequirement
+    {
+        public int MinimumAge { get; }
+
+        public MinimumAgeRequirement(int minimumAge)
+        {
+            MinimumAge = minimumAge;
+        }
+    }
+
+    public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
+    {
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+                                                       MinimumAgeRequirement requirement)
+        {
+            context.Succeed(requirement);
+            return Task.CompletedTask;
+        }
+    }
+    #endregion
 }
