@@ -6,16 +6,16 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "contact.component.html"
 })
 export class ContactComponent {
-  contacts: contact[];
+  contacts: Contact[];
 
   constructor(private monHttp: HttpClient) {
-    let urlApiAgenda = "http://localhost:60499";
+    let urlApiAgenda = "http://localhost:58721";
     monHttp.get(urlApiAgenda + "/Contact").subscribe((result) => {
-      this.contacts = <contact[]>result;
+      this.contacts = <Contact[]>result;
     })
   }
 }
-interface contact {
+export interface Contact {
   nom: any;
   prenom: any;
   tel: any;
