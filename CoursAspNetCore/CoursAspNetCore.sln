@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursApiRest", "CoursApiRes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAgenda", "ApiAgenda\ApiAgenda.csproj", "{7DE8B09C-FCFE-46D5-B046-669735D47838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVoiture", "ApiVoiture\ApiVoiture.csproj", "{2FCBB977-D4CB-4260-844D-350576966ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiVoiture", "ApiVoiture\ApiVoiture.csproj", "{2FCBB977-D4CB-4260-844D-350576966ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreAvecFrontAngular", "AspNetCoreAvecFrontAngular\AspNetCoreAvecFrontAngular.csproj", "{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreAvecFrontAngular", "AspNetCoreAvecFrontAngular\AspNetCoreAvecFrontAngular.csproj", "{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaAngular", "AgendaAngular\AgendaAngular.csproj", "{2F7740BA-224A-4E7A-BD89-A2302F834226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

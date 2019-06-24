@@ -18,7 +18,7 @@ namespace ApiAgenda.Controllers
         //[EnableCors("Police2")]
         public IActionResult Get([FromHeader] string token)
         {
-            if (token == "valueToken")
+            if (token != "valueToken")
             {
                 List<Contact> l = DatabaseContext.Instance.Contacts.Include("emails").ToList();
 
