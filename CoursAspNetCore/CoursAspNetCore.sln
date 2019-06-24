@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiVoiture", "ApiVoiture\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreAvecFrontAngular", "AspNetCoreAvecFrontAngular\AspNetCoreAvecFrontAngular.csproj", "{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaAngular", "AgendaAngular\AgendaAngular.csproj", "{2F7740BA-224A-4E7A-BD89-A2302F834226}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaAngular", "AgendaAngular\AgendaAngular.csproj", "{DC089101-3BD0-49B7-8A4B-B79D65555D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,10 +89,10 @@ Global
 		{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724EC7F7-C03A-448B-AA70-EC88CBAF7EC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F7740BA-224A-4E7A-BD89-A2302F834226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC089101-3BD0-49B7-8A4B-B79D65555D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC089101-3BD0-49B7-8A4B-B79D65555D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC089101-3BD0-49B7-8A4B-B79D65555D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC089101-3BD0-49B7-8A4B-B79D65555D30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

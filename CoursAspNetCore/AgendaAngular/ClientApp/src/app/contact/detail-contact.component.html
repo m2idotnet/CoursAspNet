@@ -1,0 +1,10 @@
+<div>
+  <h1>Detail Contact : {{contact.nom}} {{contact.prenom}}</h1>
+  <div>
+    Tel : {{contact.tel}}
+  </div>
+  <div>Liste des emails</div>
+  <div *ngFor="let e of contact.emails">
+    {{e.mail}}
+  </div>
+</div>
