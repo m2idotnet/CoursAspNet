@@ -10,6 +10,7 @@ export class ContactComponent {
 
   constructor(private monHttp: HttpClient) {
     let urlApiAgenda = "http://localhost:60499";
+    const test = "";
     monHttp.get(urlApiAgenda + "/Contact").subscribe((result) => {
       this.contacts = <Contact[]>result;
     })
