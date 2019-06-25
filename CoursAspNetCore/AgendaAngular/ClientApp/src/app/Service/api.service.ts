@@ -15,4 +15,12 @@ export class ApiService {
   monGet = (path) => {
     return this.http.get(this.urlApiAgenda + "/" + path);
   }
+
+  monPut = (path, data) => {
+    return this.http.put(this.urlApiAgenda + "/" + path, data);
+  }
+
+  monDelete = (path) => {
+    return this.http.delete(this.urlApiAgenda + "/" + path);
+  }
 }

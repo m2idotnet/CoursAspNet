@@ -13,7 +13,10 @@
     </div>
 
     <div class="row">
-      <button type="submit" class="form-control btn btn-danger">Ajouter</button>
+      <button type="submit" class="form-control btn btn-danger">
+      <span *ngIf="addFromType == true">Ajouter</span>
+      <span *ngIf="addFromType == false">Modifier</span>
+      </button>
     </div>
   </form>
 </div>

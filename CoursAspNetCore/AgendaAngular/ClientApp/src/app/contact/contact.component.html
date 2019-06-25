@@ -2,7 +2,7 @@
   <h1>Liste des contacts</h1>
   <div class="container">
     <div *ngFor="let c of contacts" class="row">
-      {{c.nom}} {{c.prenom}} {{c.tel}} <a [routerLink]="['/detail',c.id]">Détail</a>
+      {{c.nom}} {{c.prenom}} {{c.tel}} <a [routerLink]="['/detail',c.id]">Détail</a> <a [routerLink]="['/add-contact',c.id]">Modifier</a> <a (click)="Delete(c.id)">Supprimer</a>
       <!--{{c.nom}} {{c.prenom}} {{c.tel}} <a routerLink="/detail/{{c.id}}">Détail</a>-->
     </div>
   </div>

@@ -36,6 +36,7 @@ import { ApiService } from './Service/api.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'add-contact', component: AddContactComponent },
+      { path: 'add-contact/:id', component: AddContactComponent },
       { path: 'detail/:id', component: DetailContactComponent },
     ])
   ],

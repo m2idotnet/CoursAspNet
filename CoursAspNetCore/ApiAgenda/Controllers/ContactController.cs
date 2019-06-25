@@ -89,5 +89,21 @@ namespace ApiAgenda.Controllers
                 }
             }
         }
+
+        [HttpDelete("{id}")]
+        public bool Delete(int id)
+        {
+            Contact c = DatabaseContext.Instance.Contacts.FirstOrDefault(x => x.Id == id);
+            if(c == null)
+            {
+                return false;
+            }
+            else
+            {
+                DatabaseContext.Instance.Contacts.Remove(c);
+                DatabaseContext.Instance.SaveChanges();
+                return true;
+            }
+        }
     }
 }
