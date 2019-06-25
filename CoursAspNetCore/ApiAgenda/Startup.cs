@@ -36,7 +36,7 @@ namespace ApiAgenda
             });
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("espacePrive", policy => policy.Requirements.Add(new EspacePriveRequirement() { access = false}));
+                options.AddPolicy("espacePrive", policy => policy.Requirements.Add(new EspacePriveRequirement() { access = true}));
             });
             services.AddHttpContextAccessor();
         }

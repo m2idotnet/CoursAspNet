@@ -9,11 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiAgenda.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize("espacePrive")]
     public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]
-        [Authorize("espacePrive")]
+        
         public IEnumerable<string> Get()
         {
             int entier = 10;
