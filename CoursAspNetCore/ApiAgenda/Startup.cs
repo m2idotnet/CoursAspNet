@@ -34,6 +34,11 @@ namespace ApiAgenda
                     builder.AllowAnyOrigin().AllowAnyMethod();
                 });
             });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("espacePrive", policy => policy.Requirements.Add(new EspacePriveRequirement() { access = false}));
+            });
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CorrectionAgenda2\CorrectionAgenda2.csproj" />
+    <ProjectReference Include="..\MesExtension\MesExtension.csproj" />
   </ItemGroup>
 
 </Project>

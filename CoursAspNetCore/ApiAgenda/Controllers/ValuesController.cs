@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MesExtension;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAgenda.Controllers
@@ -11,9 +13,16 @@ namespace ApiAgenda.Controllers
     {
         // GET api/values
         [HttpGet]
+        [Authorize("espacePrive")]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            int entier = 10;
+            entier.Add(34);
+            string[]  tab = new string[] { "value1", "value2" };
+            //Utilisation de la methode d'extension appliquée à un tableau
+            //la methode d'extension Melanger a été crée dans la class statique extension
+            tab.Melanger();
+            return tab;
         }
 
         // GET api/values/5
