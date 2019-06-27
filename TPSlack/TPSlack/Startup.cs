@@ -32,7 +32,7 @@ namespace TPSlack
             {
                 options.AddPolicy("AllAccess", builder =>
                  {
-                     builder.WithOrigins().WithHeaders().WithMethods();
+                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                  });
             });
 
@@ -47,6 +47,8 @@ namespace TPSlack
             });
             //Ajouter le service qui implemente l'interface IhttpContextAccecssor pour pouvoir l'utiliser en injection des differents objects(controller, model, reuqirement ....)
             services.AddHttpContextAccessor();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
