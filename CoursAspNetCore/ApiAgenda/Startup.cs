@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -34,9 +35,10 @@ namespace ApiAgenda
                     builder.AllowAnyOrigin().AllowAnyMethod();
                 });
             });
+            var accessor = services.BuildServiceProvider().GetService<IHttpContextAccessor>();
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("espacePrive", policy => policy.Requirements.Add(new EspacePriveRequirement() { access = true}));
+                options.AddPolicy("espacePrive", policy => policy.Requirements.Add(new EspacePriveRequirement(accessor) { access = true}));
             });
             services.AddHttpContextAccessor();
         }

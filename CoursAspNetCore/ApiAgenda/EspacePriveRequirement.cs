@@ -37,7 +37,6 @@ namespace ApiAgenda
             //}
             if (access)
             {
-                
                 return Task.Run(() => context.Succeed(requirement));
             }
             else

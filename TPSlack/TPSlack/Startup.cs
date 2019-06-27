@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TPSlack.Tools;
 
 namespace TPSlack
 {
@@ -33,6 +35,18 @@ namespace TPSlack
                      builder.WithOrigins().WithHeaders().WithMethods();
                  });
             });
+
+
+            services.AddAuthorization(options =>
+            {
+                IHttpContextAccessor accessor = services.BuildServiceProvider().GetService<IHttpContextAccessor>();
+                options.AddPolicy("slackPolicy", policy =>
+                {
+                    policy.Requirements.Add(new SlackRequirement(accessor));
+                });
+            });
+            //Ajouter le service qui implemente l'interface IhttpContextAccecssor pour pouvoir l'utiliser en injection des differents objects(controller, model, reuqirement ....)
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

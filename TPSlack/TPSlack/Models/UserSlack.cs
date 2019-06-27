@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace TPSlack.Models
         public string Email { get => email; set => email = value; }
         public string Token { get => token; set => token = value; }
 
+        [JsonIgnore]
         public ICollection<Message> messages { get; set; }
 
         public TypeRetourAdd Add()
@@ -105,6 +107,11 @@ namespace TPSlack.Models
             return sBuilder.ToString();
         }
 
+        public static UserSlack GetUserByToken(string token)
+        {
+            UserSlack user = DatabaseContext.Instance.Users.FirstOrDefault(x => x.Token != default(string) && x.Token == token);
+            return user;
+        }
 
     }
 

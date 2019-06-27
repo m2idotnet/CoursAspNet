@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TPSlack.Tools;
 
 namespace TPSlack.Models
 {
@@ -21,5 +22,36 @@ namespace TPSlack.Models
 
         [ForeignKey("UserId")]
         public UserSlack user { get; set; }
+
+        public TypeAddMessage Add()
+        {
+            if(user == null)
+            {
+                return TypeAddMessage.Error;
+            }
+            else
+            {
+                DateAdded = DateTime.Now;
+                DatabaseContext.Instance.Messages.Add(this);
+
+                #region sans ternaire
+                //if(DatabaseContext.Instance.SaveChanges() > 0)
+                //{
+                //    return TypeAddMessage.Added;
+                //}
+                //else
+                //{
+                //    return TypeAddMessage.Error;
+                //}
+                #endregion
+                return (DatabaseContext.Instance.SaveChanges() > 0) ? TypeAddMessage.Added : TypeAddMessage.Error;
+            }
+        }
+    }
+
+    public enum TypeAddMessage
+    {
+        Added,
+        Error,
     }
 }
