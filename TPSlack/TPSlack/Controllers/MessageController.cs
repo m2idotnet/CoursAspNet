@@ -27,7 +27,7 @@ namespace TPSlack.Controllers
         {
             //string token = Request.Headers["token"].ToString();
             message.user = UserSlack.GetUserByToken(token);
-            return new JsonResult(new { Status = message.Add()});
+            return new JsonResult(new { Status = message.Add(), message = new { Content = message.Content, user = message.user.UserName, dateAdded = message.DateAdded } });
         }
     }
 }
